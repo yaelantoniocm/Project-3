@@ -46,10 +46,11 @@ def welcome():
     """List all available api routes."""
     return (
         f"Available Routes:!!!!!!<br/>"
-        f"/api/v1.0/Socio Economic types<br/>"
-        f"/api/v1.0/Average Price per year<br/>"
+        f"/api/v1.0/Socio-Economic-types<br/>"
+        f"/api/v1.0/Average-Price-per-year<br/>"
         f"/api/v1.0/Cities<br/>"
-        f"/api/v1.0/Avereg per city<br/>"
+        f"/api/v1.0/Average-per-city<br/>"
+        f"/api/v1.0/Average-price-city-per-year<br/>"
     )
 
 
@@ -90,7 +91,7 @@ def Average_Price_per_year():
     return jsonify(avg_price_per_year)
 
 
-@app.route("/api/v1.0/Averege-per-city")
+@app.route("/api/v1.0/Average-per-city")
 def Avereg_per_city():
     # Create a session
     session = Session(engine)
@@ -117,6 +118,26 @@ def Cities():
     session.close()
 
     return jsonify(cities)
+
+
+@app.route("/api/v1.0/Average-price-city-per-year")
+def Average_price_city_per_year():
+    # Create a session
+    session = Session(engine)
+
+    query = "SELECT * FROM all_info_houses"
+    df = pd.read_sql(query, engine)
+
+    df['year'] = pd.to_datetime(
+        df['Date_of_registration'], format='%d/%m/%Y').dt.year
+    avg_price_per_city_per_year = df.groupby(['City', 'year'])[
+        'Avg_price'].mean().reset_index()
+
+    # Convert list of tuples into normal list
+    json_ready_dict = {f"{row['City']}_{row['year']}": row['Avg_price']
+                       for index, row in avg_price_per_city_per_year.iterrows()}
+
+    return jsonify(json_ready_dict)
 
 
 if __name__ == '__main__':
