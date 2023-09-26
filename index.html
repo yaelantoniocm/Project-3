@@ -4,10 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./static/css/style.css" media="screen">
   <title>Document</title>
 </head>
 <body>
-  <h1>Open the console!</h1>
+  <div class="col-md-12 jumbotron text-center">
+    <h1>Impossible house prices</h1>
+  </div>
+  <div class = "line-char">
+    <button class="button" onclick="updatePlot('Cancun')">Cancun</button>
+    <button class="button" onclick="updatePlot('Guadalajara')">Guadalajara</button>
+    <button class="button" onclick="updatePlot('Monterrey')">Monterrey</button>
+    <button class="button" onclick="updatePlot('Tijuana')">Tijuana</button>
+    <button class="button" onclick="updatePlot('ZMCM')">ZMCM</button>
+    <div id="linePlot"></div>
+  </div>
+  
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="./static/js/app.js"></script>

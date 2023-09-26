@@ -64,10 +64,10 @@ def Socio_Economic_type():
     # Create a session
     session = Session(engine)
 
-    query = "SELECT * FROM all_info_houses"
+    query = "SELECT Socioeconomic_category FROM all_info_houses"
     df = pd.read_sql(query, engine)
 
-    # Obtener los tipos únicos en 'Socioeconomic_category' y su frecuencia
+    # Get the unique types in 'Socioeconomic Category' and their frequency
     socio_economic_types = df['Socioeconomic_category'].value_counts(
     ).to_dict()
 
@@ -81,7 +81,7 @@ def Average_Price_per_year():
     # Create a session
     session = Session(engine)
 
-    query = "SELECT * FROM all_info_houses"
+    query = "SELECT Date_of_registration, Avg_price FROM all_info_houses"
     df = pd.read_sql(query, engine)
 
     df['year'] = pd.to_datetime(
@@ -96,7 +96,7 @@ def Avereg_per_city():
     # Create a session
     session = Session(engine)
 
-    query = "SELECT * FROM all_info_houses"
+    query = "SELECT City,Avg_price FROM all_info_houses"
     df = pd.read_sql(query, engine)
 
     avg_price_per_city = df.groupby('City')['Avg_price'].mean().to_dict()
@@ -109,7 +109,7 @@ def Cities():
     # Create a session
     session = Session(engine)
 
-    query = "SELECT * FROM all_info_houses"
+    query = "SELECT City FROM all_info_houses"
     df = pd.read_sql(query, engine)
 
     # Convert list of tuples into normal list
@@ -125,7 +125,7 @@ def Average_price_city_per_year():
     # Create a session
     session = Session(engine)
 
-    query = "SELECT * FROM all_info_houses"
+    query = "SELECT City,Date_of_registration,Avg_price FROM all_info_houses"
     df = pd.read_sql(query, engine)
 
     df['year'] = pd.to_datetime(

@@ -1,0 +1,9 @@
+body{
+    background-color: #B5D3E4;
+}
+
+.col-md-12.jumbotron.text-center {
+    background-color: #3498db; /* Light blue background color */
+    color: #ffffff; /* Color text white to make it readable on the blue background */
+    padding: 20px; /* Inner space for header content */
+}
