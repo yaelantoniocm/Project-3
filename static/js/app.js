@@ -1,19 +1,80 @@
-d3.json("http://127.0.0.1:5000/api/v1.0/Socio-Economic-types").then(function(data) {
-  console.log(data);
-});
+function generatePieChart() {
+    d3.json("http://127.0.0.1:5000/api/v1.0/Socio-Economic-types").then(function(data) {
+        console.log(data);
+        console.log(data);
+        let labels = Object.keys(data);
+        let values = Object.values(data);
+        // Here we can specify the colors for each bar. If we have more socio-economic types, we have to add more colors.
+        let colors = ['#80CED7', '#DD2D4A', '#C874D9', '#F7B801', '#F18701']; 
 
-d3.json("http://127.0.0.1:5000/api/v1.0/Average-Price-per-year").then(function(data) {
-    console.log(data);
-});
+        let trace = {
+            type: 'pie',
+            labels: labels,
+            values: values,
+            marker: {
+                colors: colors
+            }
+        };
+        let layout = {
+            title: 'Socio-Economic Types'
+        };
+        Plotly.newPlot('piePlot', [trace], layout);
+    });
+}
 
-d3.json("http://127.0.0.1:5000/api/v1.0/Average-per-city").then(function(data) {
-    console.log(data);
-});
+function generateBarChartAveragePriceByYear() {
+    d3.json("http://127.0.0.1:5000/api/v1.0/Average-Price-per-year").then(function(data) {
+        var trace = {
+            x: Object.keys(data),
+            y: Object.values(data),
+            type: 'bar',
+            // Here we can specify the colors for each bar. If we add more cities, we have to add more colors.
+            marker: {
+                color: ['#800080', '#0000FF', '#9DACFF', '#76E5FC', '#4BC0D9']
+            }
+        };
+        var layout = {
+            title: 'Average Prices by Year',
+            xaxis: {
+                title: 'City'
+            },
+            yaxis: {
+                title: 'Average Price'
+            }
+        };
+        Plotly.newPlot('bar-chart-price-by-year', [trace], layout);
+    });
+}
+
+function generateBarChartAveragePriceByCity() {
+    d3.json("http://127.0.0.1:5000/api/v1.0/Average-per-city").then(function(data) {
+        var trace = {
+            x: Object.keys(data),
+            y: Object.values(data),
+            type: 'bar',
+            // Here we can specify the colors for each bar. If we add more cities, we have to add more colors.
+            marker: {
+                color: ['#800080', '#0000FF', '#C874D9', '#E1BBC9', '#8AC6D0']
+            }
+        };
+        var layout = {
+            title: 'Average Prices by City',
+            xaxis: {
+                title: 'City'
+            },
+            yaxis: {
+                title: 'Average Price'
+            }
+        };
+        Plotly.newPlot('bar-chart-price-by-city', [trace], layout);
+    });
+}
 
 d3.json("http://127.0.0.1:5000/api/v1.0/Cities").then(function(data) {
     console.log(data);
 });
 
+function generateLineGrapCityPerYearPrice(city = 'Cancun') {
 d3.json("http://127.0.0.1:5000/api/v1.0/Average-price-city-per-year").then(function(data) {
     
     let transformedData = {};
@@ -24,7 +85,6 @@ d3.json("http://127.0.0.1:5000/api/v1.0/Average-price-city-per-year").then(funct
         }
         transformedData[city][year] = data[key];
     }
-
     let city = 'Cancun';
     let cityData = transformedData[city];
     console.log('data', data);
@@ -40,12 +100,12 @@ d3.json("http://127.0.0.1:5000/api/v1.0/Average-price-city-per-year").then(funct
     };
     let layout = {
         title : `Average Price - ${city}`,
-        xaxis: {title: 'Year' },
-        yaxis: {title: 'Average price'}
-
+        xaxis: {title: 'Year'},
+        yaxis: {title: 'Average price'},
+        //paper_bgcolor: '#00000',
+        //plot_bgcolor: '#B5D3E4'
     }
     Plotly.newPlot('linePlot', [trace], layout);
-
     window.updatePlot = function(newCity) {
         let newCityData = transformedData[newCity];
 
@@ -64,4 +124,11 @@ d3.json("http://127.0.0.1:5000/api/v1.0/Average-price-city-per-year").then(funct
 
         Plotly.update('linePlot', update, newLayout);
     }
-});
+})
+}
+
+// Initial call of the functions
+generatePieChart();
+generateLineGrapCityPerYearPrice();
+generateBarChartAveragePriceByCity();
+generateBarChartAveragePriceByYear();

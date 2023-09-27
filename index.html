@@ -8,18 +8,39 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="col-md-12 jumbotron text-center">
-    <h1>Impossible house prices</h1>
-  </div>
-  <div class = "line-char">
-    <button class="button" onclick="updatePlot('Cancun')">Cancun</button>
-    <button class="button" onclick="updatePlot('Guadalajara')">Guadalajara</button>
-    <button class="button" onclick="updatePlot('Monterrey')">Monterrey</button>
-    <button class="button" onclick="updatePlot('Tijuana')">Tijuana</button>
-    <button class="button" onclick="updatePlot('ZMCM')">ZMCM</button>
+<div class="col-md-12 jumbotron text-center">
+  <h1>Impossible house prices</h1>
+  <p>What is the cost of housing in the main cities?</p>
+</div>
+
+<div class="chart-container">
+  <div class = "left-charts">
+    <div class="line-char">
+      <div class="button-container">
+        <button class="button" onclick="updatePlot('Cancun')">Cancun</button>
+        <button class="button" onclick="updatePlot('Guadalajara')">Guadalajara</button>
+        <button class="button" onclick="updatePlot('Monterrey')">Monterrey</button>
+        <button class="button" onclick="updatePlot('Tijuana')">Tijuana</button>
+        <button class="button" onclick="updatePlot('ZMCM')">Mexico City</button>
+      </div>
     <div id="linePlot"></div>
+    </div>
+    <div class="bar-chart-container">
+      <div id="bar-chart-price-by-city"></div>
+    </div>
   </div>
-  
+  <div class = "right-charts">
+    <div class="pie-chart-container">
+      <div class="pie-chart">
+          <div id="piePlot"></div>
+      </div>
+      <div class="bar-chart-container-by-year">
+        <div class="bar-chart-by-year">
+            <div id="bar-chart-price-by-year"></div>
+        </div>
+    </div>
+  </div>
+</div>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="./static/js/app.js"></script>

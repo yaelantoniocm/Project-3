@@ -1,9 +1,110 @@
+/*Header Styles*/
+.col-md-12.jumbotron.text-center {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 20px; /* Add some padding inside the new border */
+    text-align: center; /* Align the text to the center */
+    font-weight: bold; /* Add bold style */
+}
+
+h1 {
+    margin-bottom: 20px; /* Add space between title and text */
+}
+
+/*Body Styles*/
 body{
     background-color: #B5D3E4;
 }
 
-.col-md-12.jumbotron.text-center {
-    background-color: #3498db; /* Light blue background color */
-    color: #ffffff; /* Color text white to make it readable on the blue background */
-    padding: 20px; /* Inner space for header content */
+/*Chart container styles*/
+.chart-container {
+    display: flex; 
+    flex-direction: row; 
+    align-items: flex-start;
+    justify-content: space-between;
+    background-color: #B5D3E4;
+}
+
+/*Left charts styles*/
+.left-charts {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #B5D3E4;
+}
+
+/*Left chart line chart styles*/
+.line-char {
+    display: flex;
+    flex-direction: column; 
+    align-items: start;
+    width: 100%;
+    background-color: #B5D3E4;
+}
+
+.button-container {
+    display: flex;
+    gap: 1px;
+}
+
+.button {
+    height: 25px; /* Adjust the height of the buttons */
+    width: 100px; /* Adjust the width of the buttons */
+    background-color: #ffffff;
+}
+
+#linePlot {
+    width: 100%;
+    background-color: #B5D3E4;
+}
+
+/*Left chart bar chart styles*/
+.bar-chart-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: start;
+    width: 100%;
+    background-color: #B5D3E4;
+}
+
+#bar-chart-price-by-city {
+    width: 100%;
+    height: 100%;
+    background-color: #B5D3E4;
+}
+
+/*Right charts styles*/
+.right-charts {
+    width: 50%;
+    background-color: #B5D3E4;
+}
+
+/*Right chart pie chart styles*/
+.pie-chart-container {
+    width: 100%; 
+    margin-top: 1.9%;
+    background-color: #B5D3E4;
+}
+
+.pie-chart {
+    width: 100%; 
+    background-color: #B5D3E4;
+}
+
+/*Right chart bar chart styles*/
+.bar-chart-container-by-year {
+    width: 100%; 
+    background-color: #B5D3E4;
+}
+
+.bar-chart-by-year {
+    width: 100%; 
+    background-color: #B5D3E4;
+}
+
+#bar-chart-price-by-year {
+    width: 100%;
+    height: 100%;
+    background-color: #B5D3E4;
 }
