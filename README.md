@@ -5,9 +5,9 @@ Bootcamp of EdX and Tecnológico de Monterrey in Ciencia de Datos. Project-3
 Team:
 
 - **Yael Antonio Calzada Martín**
--
--
--
+- **Alan Aurelio Cejudo Rodríguez**
+- **Erica Álvarez Hernández**
+- **Pablo Borboa**
 
 To run the project:
 

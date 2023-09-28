@@ -108,3 +108,15 @@ body{
     height: 100%;
     background-color: #B5D3E4;
 }
+
+/* Last Graph */
+#newGraphContainer {
+    display: flex;
+    width: 80%; 
+    height: 30%; 
+    margin: 0 auto; 
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
