@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="./static/css/style.css" media="screen">
   <title>Document</title>
 </head>
-<body>
+<>
 <div class="col-md-12 jumbotron text-center">
   <h1>Impossible house prices</h1>
   <p>What is the cost of housing in the main cities?</p>
@@ -39,12 +39,17 @@
       <div class="bar-chart-by-year">
           <div id="bar-chart-price-by-year"></div>
       </div>
-      <div id="piePlotCities"></div>
+    </div>
+    <div class = "pie-container">
+      <canvas id="piePlotCities"></canvas>
     </div>
   </div>
 </div>
+
+
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="./static/js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

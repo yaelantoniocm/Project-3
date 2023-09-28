@@ -10,7 +10,6 @@ function init() {
 function generatePieChartTypes() {
     d3.json("http://127.0.0.1:5000/api/v1.0/Socio-Economic-types").then(function(data) {
         console.log(data);
-        console.log(data);
         let labels = Object.keys(data);
         let values = Object.values(data);
         // Here we can specify the colors for each bar. If we have more socio-economic types, we have to add more colors.
@@ -84,31 +83,36 @@ function generateBarChartAveragePriceByCity() {
 function generatePieChartCities() {
     d3.json("http://127.0.0.1:5000/api/v1.0/Cities").then(function(data) {
         console.log(data);
-        console.log(data);
-        console.log(data);
         let labels = Object.keys(data);
         let values = Object.values(data);
         // Here we can specify the colors for each bar. If we have more socio-economic types, we have to add more colors.
         let colors = ['#80CED7', '#DD2D4A', '#C874D9', '#F7B801', '#F18701']; 
 
-        let trace = {
+        let ctx = document.getElementById('piePlotCities').getContext('2d');
+        let myChart = new Chart(ctx, {
             type: 'pie',
-            labels: labels,
-            values: values,
-            marker: {
-                colors: colors
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: colors,
+                    radius: "100%",
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Cities'
+                }
             }
-        };
-        let layout = {
-            title: 'Cities'
-        };
-        Plotly.newPlot('piePlotCities', [trace], layout);
+        });
     });
 }
 
+
 function generateLineGrapCityPerYearPrice(city = 'Cancun') {
     d3.json("http://127.0.0.1:5000/api/v1.0/Average-price-city-per-year").then(function(data) {
-    
+        console.log(data);
         let transformedData = {};
         for (let key in data) {
             let [city,year] = key.split('_');
